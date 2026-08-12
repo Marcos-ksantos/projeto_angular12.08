@@ -1,0 +1,10 @@
+#links{
+    background-color: rgb(243, 126, 126);
+    display: flex;
+    justify-content:space-between;
+    margin: auto 0px 20px;
+    padding:10px;
+}
+a{
+    text-decoration: none;
+}
