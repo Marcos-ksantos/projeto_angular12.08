@@ -1,1 +1,39 @@
-<p>formulario works!</p>
+<div id="geral">
+
+    <div id="form">
+
+        <label for="nome">Nome</label>
+        <input type="text"class="class-1"  name="nome" id="nome" [(ngModel)]="nome" required>
+
+        <label for="data">data</label>
+        <input type="date"class="class-4" name="data" id="data" [(ngModel)]="data" required>
+        
+        <label for="cpf">cpf</label>
+        <input type="number" class="class-3" name="cpf" id="cpf" [(ngModel)]="cpf" required>
+
+
+<label for="sexo">Gênero</label>
+        <select type="text" class="class-4" name="sexo" id="sexo" [(ngModel)]="sexo" required>
+
+            <option value="">Selecione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+
+        </select>
+
+
+        <label for="cep">cep</label>
+        <input type="text" class="class-2" name="cep" id="cep" [(ngModel)]="cep" required>
+
+        <label for="uf">uf</label>
+        <input type="text" class="class-4" name="uf" id="uf" [(ngModel)]="uf" required>
+
+        <label for="cidade">cidade</label>
+        <input type="text" class="class-4" name="cidade" id="cidade" [(ngModel)]="cidade" required>
+
+        <label for="bairro">bairro</label>
+        <input type="text" class="class-3" name="bairro" id="bairro" [(ngModel)]="bairro" required>
+
+    </div>
+
+</div>

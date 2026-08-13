@@ -1,10 +1,11 @@
 export class Clientes{
 id?:number = 0
 nome?:string
-data?:number
-telefone?:number
+data?:string
+sexo?:string
 cpf?:number
-email?:string
+cep?:string
 uf?:string
-municipio?:string
+cidade?:string
+bairro?:string
 }

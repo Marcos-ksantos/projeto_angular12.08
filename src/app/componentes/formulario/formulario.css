@@ -1,4 +1,50 @@
-*{
-    background-color: rgb(217, 255, 0);
-    }
-    
+
+#geral {
+
+  padding: 20px;
+  margin: auto;
+  width: 900px;
+  height: 600px;
+}
+
+#form {
+
+  background-color: aliceblue;
+  margin: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input,
+select {
+
+  background-color: rgba(255, 255, 255, 0.781);
+  padding: 4px;
+  margin: 10px;
+  min-width: 100px;
+}
+
+
+label {
+  display: flex;
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.13);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgba(39, 39, 39, 0.534);
+}
+
+.class-1{
+    width: 70%;
+}
+.class-2{
+    width: 50%;
+}
+.class-3{
+    width: 59%;
+}
+.class-4{
+    width: 35%;
+}
