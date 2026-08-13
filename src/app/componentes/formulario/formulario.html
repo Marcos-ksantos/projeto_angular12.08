@@ -11,17 +11,12 @@
         <label for="cpf">cpf</label>
         <input type="number" class="class-3" name="cpf" id="cpf" [(ngModel)]="cpf" required>
 
-
+<div>
 <label for="sexo">Gênero</label>
-        <select type="text" class="class-4" name="sexo" id="sexo" [(ngModel)]="sexo" required>
-
-            <option value="">Selecione</option>
-            <option value="M">Masculino</option>
-            <option value="F">Feminino</option>
-
-        </select>
-
-
+        <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="M"><span>Masculino</span>
+        <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="F"><span>Feminino</span>
+        <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="N"><span>Não declarar</span>
+</div>
         <label for="cep">cep</label>
         <input type="text" class="class-2" name="cep" id="cep" [(ngModel)]="cep" required>
 
@@ -33,6 +28,14 @@
 
         <label for="bairro">bairro</label>
         <input type="text" class="class-3" name="bairro" id="bairro" [(ngModel)]="bairro" required>
+
+<div id="btns">
+
+    <button type="button" class="btn-add">Cadastrar-se</button>
+    <button type="button" class="btn-limpar">Limpar</button>
+
+</div>
+
 
     </div>
 

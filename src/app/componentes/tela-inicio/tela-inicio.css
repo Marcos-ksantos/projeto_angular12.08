@@ -1,4 +1,14 @@
 *{
     background-color: rgb(0, 119, 255);
+    height: 400px;
+    margin: auto;
     }
-    
+    span{
+        align-items: center;
+        font-size: 40px;
+
+    }
+    #sla{
+        margin: auto 40px;
+        padding: auto;
+    }

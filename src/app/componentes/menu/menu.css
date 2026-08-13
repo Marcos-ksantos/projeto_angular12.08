@@ -22,7 +22,19 @@ height: 100%;
     border: 3px solid rgba(255, 255, 255, 0.541);
     border-radius: 4px;
     padding: 0px 4px;
+    transition: 0.2s;
 }
+
+#titulo-logo span{
+    transition: 0.2s;
+}
+
+#titulo-logo span:hover{
+    transition: 0.2s;
+    transform: translateY(-2px);
+    cursor: grab;
+}
+
 #link{
     list-style: none;
     margin: 8px;
@@ -42,4 +54,8 @@ a {
 }
 .sla{
     margin: 0px 20px;
+}
+
+span:hover{
+    transform: translateY(-2px);
 }
