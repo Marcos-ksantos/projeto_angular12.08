@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Clientes } from '../modelos/clientes';
+import { Cliente } from '../modelos/clientes';
 
 
 @Injectable({
@@ -7,9 +7,9 @@ import { Clientes } from '../modelos/clientes';
 })
 
 export class ClientesService {
-    private clientes: Clientes [] = []
+    private clientes: Cliente [] = []
 
-    adicionar(clientes: Clientes){
+    adicionar(clientes: Cliente){
         this.clientes.push(clientes)
     }
 
@@ -23,7 +23,7 @@ export class ClientesService {
 this.clientes = this.clientes.filter(elem => elem.id !== elem.id)
     }
 
-    Remover2(clientes: Clientes){
+    Alterar(clientes: Cliente){
         let pos = this.clientes.findIndex(elem =>elem.id !== clientes.id)
         this.clientes[pos] = clientes
     }

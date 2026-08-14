@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ClientesService } from '../../service/clientes-service';
+import { Cliente } from '../../modelos/clientes';
 
 @Component({
   selector: 'app-formulario',
@@ -19,8 +20,12 @@ export class Formulario {
   cidade:string = ''
   bairro:string = ''
 
+  constructor(private clienteService : ClientesService){}
+
   ExibirDads(){
 console.log(this.nome,this.data,this.cpf,this.sexo,this.cep,this.uf,this.cidade,this.bairro,)
+
+this.limparDados()
 }
 
 limparDados(){
@@ -32,6 +37,25 @@ limparDados(){
   this.uf = ''
   this.cidade = ''
   this.bairro = ''
+}
+
+salvar(){
+  const cliente = new Cliente
+
+  cliente.nome = this.nome
+  cliente.data = this.data
+ cliente.sexo = this.sexo
+  cliente.cpf = this.cpf
+  cliente.cep = this.cep
+  cliente.uf = this.uf
+  cliente.cidade = this.cidade
+  cliente.bairro = this.bairro
+
+  this.clienteService.adicionar(cliente)
+
+  this.limparDados()
+
+  this.clienteService.Listar()
 }
 
 }
