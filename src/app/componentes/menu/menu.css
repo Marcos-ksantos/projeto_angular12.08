@@ -18,21 +18,30 @@ height: 100%;
     font-size: 25px;
     color: var(--cor02);
 }
-#titulo-logo{
-    border: 3px solid rgba(255, 255, 255, 0.541);
-    border-radius: 4px;
-    padding: 0px 4px;
-    transition: 0.2s;
+#logo span{
+    display: inline-block;
+    padding: 0px 2px;
+    transition: 0.1s;
+
 }
 
-#titulo-logo span{
-    transition: 0.2s;
+
+#logo span:hover{
+    transform: translateY(-4px);
+    cursor:default;
 }
 
-#titulo-logo span:hover{
-    transition: 0.2s;
+#logo h3{
+    display: inline-block;
+    padding: 0px 2px;
+    transition: 0.4s;
+
+}
+
+
+#logo h3:hover{
     transform: translateY(-2px);
-    cursor: grab;
+    cursor:default;
 }
 
 #link{
@@ -54,8 +63,4 @@ a {
 }
 .sla{
     margin: 0px 20px;
-}
-
-span:hover{
-    transform: translateY(-2px);
 }
