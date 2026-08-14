@@ -1,0 +1,26 @@
+#geral{
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+#cabecario{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 40px;
+letter-spacing: 4px;
+}
+
+#form{
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+input,textarea,select,{
+    margin: 10px;
+}
+label{
+    font-size: 20px;
+}

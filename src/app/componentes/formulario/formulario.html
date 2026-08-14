@@ -1,22 +1,34 @@
 <div id="geral">
 
-    <div id="form">
+<div id="cabecario">
+
+    <h2>Cadastro de Atletas</h2>
+
+</div>
+
+    <div id="form" (submit)="salvar()">
 
         <label for="nome">Nome</label>
-        <input type="text"class="class-1"  name="nome" id="nome" [(ngModel)]="nome" required>
+        <input type="text" class="class-1" name="nome" id="nome" [(ngModel)]="nome" required>
 
         <label for="data">data</label>
-        <input type="date"class="class-4" name="data" id="data" [(ngModel)]="data" required>
-        
+        <input type="date" class="class-4" name="data" id="data" [(ngModel)]="data" required>
+
         <label for="cpf">cpf</label>
         <input type="number" class="class-3" name="cpf" id="cpf" [(ngModel)]="cpf" required>
 
-<div>
-<label for="sexo">Gênero</label>
-        <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="M"><span>Masculino</span>
-        <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="F"><span>Feminino</span>
-        <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="N"><span>Não declarar</span>
-</div>
+        <div>
+            
+            <label for="sexo">Gênero</label>
+            <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required
+                value="M"><span>Masculino</span>
+            <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required
+                value="F"><span>Feminino</span>
+            <input type="radio" class="rad" name="sexo" id="sexo" [(ngModel)]="sexo" required value="N"><span>Não
+                declarar</span>
+
+        </div>
+
         <label for="cep">cep</label>
         <input type="text" class="class-2" name="cep" id="cep" [(ngModel)]="cep" required>
 
@@ -29,12 +41,12 @@
         <label for="bairro">bairro</label>
         <input type="text" class="class-3" name="bairro" id="bairro" [(ngModel)]="bairro" required>
 
-<div id="btns">
+        <div id="btns">
 
-    <button type="button" class="btn-add" (click)="ExibirDads()">Cadastrar-se</button>
-    <button type="button" class="btn-limpar"(click)="limparDados()">Limpar</button>
+            <button type="button" class="btn-add" (click)="salvar()">Cadastrar-se</button>
+            <button type="button" class="btn-limpar" (click)="limparDados()">Limpar</button>
 
-</div>
+        </div>
 
 
     </div>

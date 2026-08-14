@@ -4,6 +4,7 @@
   width: 900px;
   min-height: 750px;
   border: 2px solid rgba(137, 141, 74, 0.74);
+  box-shadow: 5px 5px 10px 2px;
 }
 
 #form {
@@ -27,6 +28,9 @@ select {
   margin: auto;
   width: 900px;
   height: 600px;
+}
+#cabecario{
+  text-align: center;
 }
 
 input{
