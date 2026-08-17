@@ -1,3 +1,15 @@
-*{
-background-color: rgb(60, 255, 0);
+#form{
+
+width: 50%;
+margin: auto;
+padding: 10px 20px;
+}
+.cliente{
+    margin: 10px 0px;
+    border: 1px solid black;
+    padding: 9px;
+}
+.sem-cadastros{
+    border: 1px solid black;
+padding: 10px;
 }

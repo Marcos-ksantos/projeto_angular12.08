@@ -1,1 +1,22 @@
-<p>lista-cadastros works!</p>
+
+<div id="form">
+
+
+@for(elem of ngOnInit();track elem.id){
+    <div class="cliente">
+<p> {{elem.id}}</p>
+<p>Nome: <strong>{{elem.nome}}</strong></p>
+<p>Data: <strong>{{elem.data}}</strong></p>
+<p>CPF: <strong>{{elem.cpf}}</strong></p>
+<p>GÊNERO: <strong>{{elem.sexo}}</strong></p>
+<p>CEP: <strong>{{elem.cep}}</strong></p>
+<p>UF: <strong>{{elem.uf}}</strong></p>
+      </div>
+}@empty{
+    <div class="sem-cadastros">
+<p>Nenhum Cadastro Registrado</p>
+    </div>
+}
+
+
+</div>
