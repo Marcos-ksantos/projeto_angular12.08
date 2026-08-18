@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ClientesService } from '../../service/clientes-service';
-import { Cliente } from '../../modelos/clientes';
+import { ClientesService } from '../../../service/clientes-service';
+import { Cliente } from '../../../modelos/clientes';
 
 @Component({
   selector: 'app-formulario',
@@ -46,13 +46,9 @@ export class Formulario {
     this.uf = '';
     this.cidade = '';
     this.bairro = '';
-
-   
   }
 
-
-
-  salvar() {
+  enviarDados() {
     const cliente = new Cliente();
 
     cliente.nome = this.nome;
@@ -64,10 +60,17 @@ export class Formulario {
     cliente.cidade = this.cidade;
     cliente.bairro = this.bairro;
 
-    this.clienteService.adicionar(cliente);
+    this.clienteService.salvarAtleta(cliente).subscribe({
+      next: (resposta) => {
+        console.log(resposta);
+      },
+      error: (msgErro) => {
+        console.log(msgErro);
+      },
+    });
 
     this.limparDados();
 
-    this.clienteService.Listar();
-  } 
+    this.clienteService.listarAtletas();
+  }
 }

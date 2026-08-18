@@ -2,7 +2,7 @@
 <div id="form">
 
 
-@for(elem of ngOnInit();track elem.id){
+@for(elem of ListaAtletas();track elem.id){
     <div class="cliente">
 <p> {{elem.id}}</p>
 <p>Nome: <strong>{{elem.nome}}</strong></p>
@@ -11,6 +11,12 @@
 <p>GÊNERO: <strong>{{elem.sexo}}</strong></p>
 <p>CEP: <strong>{{elem.cep}}</strong></p>
 <p>UF: <strong>{{elem.uf}}</strong></p>
+
+<div id="btns">
+    <button type="button" class="Alterar" (click)="  CarregaDadosAtletaForm(elem)">Alterar</button>
+    <button type="button" class="Exclir" (click)="excluir(elem.id)">Excluir</button>
+</div>
+
       </div>
 }@empty{
     <div class="sem-cadastros">

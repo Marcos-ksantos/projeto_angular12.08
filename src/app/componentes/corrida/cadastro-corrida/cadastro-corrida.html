@@ -5,7 +5,7 @@
         <h2>
             <span>C</span><span>a</span><span>d</span><span>a</span><span>s</span><span>t</span><span>r</span><span>o</span>
             <span></span>
-            <span >de</span>
+            <span>de</span>
             <span> </span>
             <span>C</span><span>o</span><span>r</span><span>r</span><span>i</span><span>d</span><span>a</span><span>s</span>
         </h2>
@@ -15,8 +15,8 @@
     <div id="form">
 
         <label for="descri">Descrição da Corrida</label>
-        <textarea name="descri" id="descri" cols="50" rows="6"
-            placeholder="Ex- Maratona Internacional de João Pessoa" [(ngModel)]='descricao'></textarea>
+        <textarea name="descri" id="descri" cols="50" rows="6" placeholder="Ex- Maratona Internacional de João Pessoa"
+            [(ngModel)]='descricao'></textarea>
 
         <label for="date">Data da Corrida</label>
         <input type="date" name="date" id="date" class="d-size" [(ngModel)]='data'>
@@ -36,13 +36,20 @@
             <button type="button" (click)="adicionar()">Cadastrar Corrida</button>
         </div>
 
-@for(elem of ngOnInit();track elem.id ){
-    <div>
+        <h2>Lista de Corridas</h2><br>
 
-<p>{{elem.descricaoCorrida}}</p>
+        @for(elem of listar();track elem.id ){
 
-</div>
-}
+
+        <div id="corridas">
+
+            <p><strong>{{elem.id}}-</strong></p>
+            <p><strong>Descrição:</strong><br>{{elem.descricaoCorrida}}<br></p>
+            <p><strong>Data:</strong>{{elem.dataCorrida}}</p>
+            <p><strong>Distância:</strong>{{elem.distCorrida}}</p>
+
+        </div>
+        }
 
     </div>
 

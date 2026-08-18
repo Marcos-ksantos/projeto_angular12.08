@@ -45,3 +45,10 @@ input:hover,textarea:hover,select:hover{
 transform: translateY(-2px);
 cursor: pointer;
 }
+#corridas{
+    border: 1px solid rgba(0, 0, 0, 0.432);
+    width: 400px;
+    min-height: 100px;
+    padding: 10px;
+    margin: 10px 0px;
+}

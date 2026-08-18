@@ -6,38 +6,39 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ClientesService {
 
-/*constructor(private http:HttpClient){ }
+constructor(private http:HttpClient){ }
 
 listarAtletas(): Observable<Cliente[]> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/crudpessoa/';
+    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
     return this.http.get<Cliente[]>(urlApi)
 }
 
 listarAtleta(id: number): Observable<Cliente> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/crudpessoa/';
+    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
     return this.http.get<Cliente>(urlApi)
 }
 
 salvarAtleta(cliente: Cliente): Observable<Cliente> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/crudpessoa/';
+    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/';
     return this.http.post<Cliente>(urlApi, cliente)
 }
 
 excluirAtleta(id: number): Observable<Cliente> {
-    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/crudpessoa//${id}`;
+    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
     return this.http.delete<Cliente>(urlApi)
 }
 
 alterarAtleta(cliente: Cliente): Observable<Cliente> {
-    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/crudpessoa//${cliente.id}`;
+    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${cliente.id}`;
     return this.http.put<Cliente>(urlApi, cliente)
 }
 
 
-}*/
-private clientes: Cliente[] = [];
+}
+/*private clientes: Cliente[] = [];
 
   adicionar(clientes: Cliente) {
     clientes.id = this.clientes.length + 1;
@@ -59,3 +60,4 @@ private clientes: Cliente[] = [];
     this.clientes[pos] = clientes;
   }
 }
+*/

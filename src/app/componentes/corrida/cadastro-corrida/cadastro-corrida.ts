@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Corridas } from '../../modelos/corridas';
-import { CorridasService } from '../../service/corridas-service';
+import { Corridas } from '../../../modelos/corridas';
+import { CorridasService } from '../../../service/corridas-service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,12 +29,12 @@ export class CadastroCorrida {
 
     this.corridaService.addCorrida(corrida);
 
-    this.descricao= '';
-    this.data= '';
-    this.distancia= '';
+    this.descricao = '';
+    this.data = '';
+    this.distancia = '';
   }
 
-  ngOnInit(){
-    return this.corridaService.ListCorrida()
+  listar() {
+    return this.corridaService.ListCorrida();
   }
 }
