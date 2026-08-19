@@ -9,10 +9,13 @@
             <span> </span>
             <span>C</span><span>o</span><span>r</span><span>r</span><span>i</span><span>d</span><span>a</span><span>s</span>
         </h2>
-
+    </div>
+    <div id="link">
+        <a routerLink='/lista-corrida'><strong>Conferir Corridas</strong></a>
     </div>
 
-    <div id="form">
+
+    <div id="form" (submit)="adicionar()">
 
         <label for="descri">Descrição da Corrida</label>
         <textarea name="descri" id="descri" cols="50" rows="6" placeholder="Ex- Maratona Internacional de João Pessoa"
@@ -33,24 +36,8 @@
         </select>
 
         <div id="btns">
-            <button type="button" (click)="adicionar()">Cadastrar Corrida</button>
+            <button type="submit">Cadastrar Corrida</button>
         </div>
-
-        <h2>Lista de Corridas</h2><br>
-
-        @for(elem of listar();track elem.id ){
-
-
-        <div id="corridas">
-
-            <p><strong>{{elem.id}}-</strong></p>
-            <p><strong>Descrição:</strong><br>{{elem.descricaoCorrida}}<br></p>
-            <p><strong>Data:</strong>{{elem.dataCorrida}}</p>
-            <p><strong>Distância:</strong>{{elem.distCorrida}}</p>
-
-        </div>
-        }
-
     </div>
 
 </div>

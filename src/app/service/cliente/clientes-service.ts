@@ -1,42 +1,38 @@
 import { Injectable } from '@angular/core';
-import { Cliente } from '../modelos/clientes';
-import {HttpClient} from '@angular/common/http'
+import { Cliente } from '../../modelos/clientes';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class ClientesService {
+  constructor(private http: HttpClient) {}
 
-constructor(private http:HttpClient){ }
-
-listarAtletas(): Observable<Cliente[]> {
+  listarAtletas(): Observable<Cliente[]> {
     const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
-    return this.http.get<Cliente[]>(urlApi)
-}
+    return this.http.get<Cliente[]>(urlApi);
+  }
 
-listarAtleta(id: number): Observable<Cliente> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
-    return this.http.get<Cliente>(urlApi)
-}
-
-salvarAtleta(cliente: Cliente): Observable<Cliente> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/';
-    return this.http.post<Cliente>(urlApi, cliente)
-}
-
-excluirAtleta(id: number): Observable<Cliente> {
+  listarAtleta(id: number): Observable<Cliente> {
     const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
-    return this.http.delete<Cliente>(urlApi)
-}
+    return this.http.get<Cliente>(urlApi);
+  }
 
-alterarAtleta(cliente: Cliente): Observable<Cliente> {
+  salvarAtleta(cliente: Cliente): Observable<Cliente> {
+    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/';
+    return this.http.post<Cliente>(urlApi, cliente);
+  }
+
+  excluirAtleta(id: number): Observable<Cliente> {
+    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
+    return this.http.delete<Cliente>(urlApi);
+  }
+
+  alterarAtleta(cliente: Cliente): Observable<Cliente> {
     const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${cliente.id}`;
-    return this.http.put<Cliente>(urlApi, cliente)
-}
-
-
+    return this.http.put<Cliente>(urlApi, cliente);
+  }
 }
 /*private clientes: Cliente[] = [];
 

@@ -1,0 +1,14 @@
+<h1>Corridas Cadastradas
+</h1>
+@for(elem of ListaCorrida();track elem.id ){
+
+
+    <div id="corridas">
+
+        <p><strong>{{elem.id}}-</strong></p>
+        <p><strong>Descrição:</strong><br>{{elem.descricaoCorrida}}<br></p>
+        <p><strong>Data:</strong>{{elem.dataCorrida}}</p>
+        <p><strong>Distância:</strong>{{elem.distCorrida}}</p>
+
+    </div>
+    }

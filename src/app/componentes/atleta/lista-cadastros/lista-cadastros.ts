@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ClientesService } from '../../../service/clientes-service';
+import { ClientesService } from '../../../service/cliente/clientes-service';
 import { Cliente } from '../../../modelos/clientes';
 import { Router } from '@angular/router';
 import { signal } from '@angular/core';
@@ -26,11 +26,9 @@ export class ListaCadastros {
   }
 
   listar() {
-    this.clientesService.listarAtletas()
-    .subscribe({
+    this.clientesService.listarAtletas().subscribe({
       next: (dados) => {
-        this.ListaAtletas.set([...dados])
-
+        this.ListaAtletas.set([...dados]);
       },
       error: (msgErro) => {
         console.log(msgErro);
@@ -38,23 +36,21 @@ export class ListaCadastros {
     });
   }
 
-  excluir(id:number){
-    if(confirm("Deseja Excluir o Atleta?")) {
-      this.clientesService.excluirAtleta(id)
-      .subscribe({
-        next: (resposta) =>{
-          console.log("Excluido com sucesso!",resposta)
-          this.listar()
+  excluir(id: number) {
+    if (confirm('Deseja Excluir o Atleta?')) {
+      this.clientesService.excluirAtleta(id).subscribe({
+        next: (resposta) => {
+          console.log('Excluido com sucesso!', resposta);
+          this.listar();
         },
-        error:(msgErro) =>{
-          console.log("Erro ao listar Atletas",msgErro)
-        }
-
-      })
+        error: (msgErro) => {
+          console.log('Erro ao listar Atletas', msgErro);
+        },
+      });
     }
   }
 
   CarregaDadosAtletaForm(atleta: Cliente) {
-    this.router.navigate(['/formulario', atleta.id])
+    this.router.navigate(['/formulario', atleta.id]);
   }
 }

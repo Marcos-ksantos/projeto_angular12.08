@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ClientesService } from '../../../service/clientes-service';
+import { ClientesService } from '../../../service/cliente/clientes-service';
 import { Cliente } from '../../../modelos/clientes';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -20,7 +21,23 @@ export class Formulario {
   cidade: string = '';
   bairro: string = '';
 
-  constructor(private clienteService: ClientesService) {}
+  idCliente = 0;
+  edit = false;
+
+  constructor(
+    private clienteService: ClientesService,
+    private router: ActivatedRoute,
+    private change: ChangeDetectorRef,
+  ) {}
+
+  ngOnInit() {
+    this.idCliente = Number(this.router.snapshot.paramMap.get('id'));
+
+    if (this.idCliente > 0) {
+      this.edit = true;
+      this.CarregaDados(this.idCliente);
+    }
+  }
 
   ExibirDads() {
     console.log(
@@ -48,6 +65,26 @@ export class Formulario {
     this.bairro = '';
   }
 
+  CarregaDados(id: number) {
+    this.clienteService.listarAtleta(id).subscribe({
+      next: (dadosCliente) => {
+        this.nome = dadosCliente.nome;
+        this.data = dadosCliente.data;
+        this.cpf = dadosCliente.cpf;
+        this.sexo = dadosCliente.sexo;
+        this.cep = dadosCliente.cep;
+        this.uf = dadosCliente.uf;
+        this.cidade = dadosCliente.cidade;
+        this.bairro = dadosCliente.bairro;
+
+        this.change.detectChanges();
+      },
+      error: (msgErro) => {
+        console.log('Erro ao carregar componentes', msgErro);
+      },
+    });
+  }
+
   enviarDados() {
     const cliente = new Cliente();
 
@@ -60,15 +97,26 @@ export class Formulario {
     cliente.cidade = this.cidade;
     cliente.bairro = this.bairro;
 
-    this.clienteService.salvarAtleta(cliente).subscribe({
-      next: (resposta) => {
-        console.log(resposta);
-      },
-      error: (msgErro) => {
-        console.log(msgErro);
-      },
-    });
-
+    if (this.edit) {
+      cliente.id = this.idCliente;
+      this.clienteService.alterarAtleta(cliente).subscribe({
+        next: (resposta) => {
+          console.log(resposta);
+        },
+        error: (msgErro) => {
+          console.log(msgErro);
+        },
+      });
+    } else {
+      this.clienteService.salvarAtleta(cliente).subscribe({
+        next: (resposta) => {
+          console.log(resposta);
+        },
+        error: (msgErro) => {
+          console.log(msgErro);
+        },
+      });
+    }
     this.limparDados();
 
     this.clienteService.listarAtletas();

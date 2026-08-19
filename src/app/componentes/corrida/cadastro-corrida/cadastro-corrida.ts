@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Corridas } from '../../../modelos/corridas';
-import { CorridasService } from '../../../service/corridas-service';
+import { CorridasService } from '../../../service/corrida/corridas-service';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-corrida',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './cadastro-corrida.html',
   styleUrl: './cadastro-corrida.css',
 })
@@ -27,7 +28,7 @@ export class CadastroCorrida {
     corrida.dataCorrida = this.data;
     corrida.distCorrida = this.distancia;
 
-    this.corridaService.addCorrida(corrida);
+    this.corridaService.salvarCorrida(corrida);
 
     this.descricao = '';
     this.data = '';
@@ -35,6 +36,6 @@ export class CadastroCorrida {
   }
 
   listar() {
-    return this.corridaService.ListCorrida();
+    return this.corridaService.listarCorridas();
   }
 }
