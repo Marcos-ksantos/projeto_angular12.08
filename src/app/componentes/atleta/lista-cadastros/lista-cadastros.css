@@ -1,15 +1,28 @@
 #form{
-
+background-color: rgba(255, 255, 255, 0.123);
 width: 50%;
 margin: auto;
 padding: 10px 20px;
 }
 .cliente{
-    margin: 10px 0px;
-    border: 1px solid black;
+    margin: 20px 0px;
+    border: 1px solid rgb(163, 163, 163);
     padding: 9px;
+    box-shadow: 10px 5px 12px;
 }
 .sem-cadastros{
     border: 1px solid black;
 padding: 10px;
+}
+button{
+    margin:15px 10px;
+    padding: 5px;
+    transition: 0.5s;
+}
+.Excluir{
+    background-color: rgba(190, 92, 92, 0.781);
+    color: rgb(131, 31, 31);
+}
+button:hover{
+transform: translateY(-2px);
 }

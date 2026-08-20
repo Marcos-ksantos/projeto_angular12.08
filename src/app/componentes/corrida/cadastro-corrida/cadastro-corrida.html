@@ -3,11 +3,7 @@
     <div id="cabecario">
 
         <h2>
-            <span>C</span><span>a</span><span>d</span><span>a</span><span>s</span><span>t</span><span>r</span><span>o</span>
-            <span></span>
-            <span>de</span>
-            <span> </span>
-            <span>C</span><span>o</span><span>r</span><span>r</span><span>i</span><span>d</span><span>a</span><span>s</span>
+            {{ !edit ? 'Cadastrar':'Alterar'}} de Corridas
         </h2>
     </div>
     <div id="link">
@@ -15,7 +11,7 @@
     </div>
 
 
-    <div id="form" (submit)="adicionar()">
+    <form id="form" (submit)="enviarDadosCorrida()">
 
         <label for="descri">Descrição da Corrida</label>
         <textarea name="descri" id="descri" cols="50" rows="6" placeholder="Ex- Maratona Internacional de João Pessoa"
@@ -36,8 +32,8 @@
         </select>
 
         <div id="btns">
-            <button type="submit">Cadastrar Corrida</button>
+            <button type="submit" (click)="enviarDadosCorrida()">{{ !edit ? 'Cadastrar':'Alterar'}}</button>
         </div>
-    </div>
+    </form>
 
 </div>

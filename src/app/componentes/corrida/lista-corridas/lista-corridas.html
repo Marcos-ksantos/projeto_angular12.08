@@ -1,6 +1,8 @@
-<h1>Corridas Cadastradas
+
+    <h1>Corridas Cadastradas
 </h1>
-@for(elem of ListaCorrida();track elem.id ){
+
+    @for(elem of ListaCorrida();track elem.id ){
 
 
     <div id="corridas">
@@ -10,5 +12,12 @@
         <p><strong>Data:</strong>{{elem.dataCorrida}}</p>
         <p><strong>Distância:</strong>{{elem.distCorrida}}</p>
 
+        <div id="btn">
+            <button type="button" class="editar" (click)="carregarDadosCorrida(elem)">Editar</button>
+            <button type="button" class="excluir" (click)="excluirCorrida(elem.id)">Excluir</button>
+
+        </div>
+
     </div>
-    }
+
+}

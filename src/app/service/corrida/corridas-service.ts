@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CorridasService {
+  
   constructor(private http: HttpClient) {}
 
   listarCorridas(): Observable<Corridas[]> {
@@ -14,7 +15,7 @@ export class CorridasService {
     return this.http.get<Corridas[]>(UrlApi);
   }
 
-  listarCorrida(id: number): Observable<Corridas[]> {
+  listarCorrida(id: number): Observable<Corridas> {
     const UrlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/corridas/${id}`;
     return this.http.get<Corridas>(UrlApi);
   }
