@@ -21,6 +21,10 @@ export class ListaCadastros {
     private clientesService: ClientesService,
   ) {}
 
+  idadeCliente(data:string) {
+return this.clientesService.CalcularIdade(data);
+  }
+
   ngOnInit() {
     return this.listar();
   }
@@ -53,4 +57,5 @@ export class ListaCadastros {
   CarregaDadosAtletaForm(atleta: Cliente) {
     this.router.navigate(['/formulario', atleta.id]);
   }
+
 }

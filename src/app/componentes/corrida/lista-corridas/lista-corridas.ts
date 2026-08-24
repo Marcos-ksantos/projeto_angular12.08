@@ -21,6 +21,21 @@ export class ListaCorridas {
     private corridaService: CorridasService,
   ) {}
 
+CalcularData(dataCorrida:string){
+  const data = new Date(dataCorrida);
+  const hoje = new Date();
+
+  let CorridaMes = hoje.getMonth() - data.getMonth()
+  let CorridaAno = hoje.getFullYear() - data.getFullYear()
+  let CorridaDia = hoje.getDate() - data.getDate()
+
+  if (data < hoje ){
+ dataCorrida =`Corrida ja ocorreu`
+  }else{
+    
+  }
+}
+
   ngOnInit() {
     return this.listarCorrida();
   }
@@ -37,7 +52,7 @@ export class ListaCorridas {
   }
 
   excluirCorrida(id: number) {
-    if (confirm(`Deseja exluir o item ${id}??`))
+    if (confirm(`Deseja exluir a corrida?`))
       this.corridaService.excluirCorrida(id).subscribe({
         next: (resposta) => {
           console.log('Excluido com sucesso!', resposta);

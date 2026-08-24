@@ -6,6 +6,7 @@ import { Menu } from './componentes/base-app/menu/menu';
 import { Component } from '../../node_modules/@angular/compiler/types/compiler';
 import { CadastroCorrida } from './componentes/corrida/cadastro-corrida/cadastro-corrida';
 import { ListaCorridas } from './componentes/corrida/lista-corridas/lista-corridas';
+import { IncricaoCorrida } from './componentes/corrida/incricao-corrida/incricao-corrida';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'formulario', pathMatch: 'full' },
@@ -16,4 +17,5 @@ export const routes: Routes = [
   { path: 'lista-corrida', component: ListaCorridas },
   { path: 'inicio', component: TelaInicio },
   { path: 'cadastros', component: ListaCadastros },
+  { path: 'inscricoes', component: IncricaoCorrida },
 ];

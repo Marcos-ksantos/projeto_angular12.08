@@ -9,6 +9,19 @@ import { Observable } from 'rxjs';
 export class ClientesService {
   constructor(private http: HttpClient) {}
 
+  CalcularIdade(data:string):number {
+    const nascimento = new Date(data);
+    const hoje = new Date();
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const mes = hoje.getMonth() - nascimento.getMonth();
+
+    if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
+return idade
+  }
+
   listarAtletas(): Observable<Cliente[]> {
     const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
     return this.http.get<Cliente[]>(urlApi);

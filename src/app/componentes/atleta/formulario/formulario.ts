@@ -20,7 +20,7 @@ export class Formulario {
   uf: string = '';
   cidade: string = '';
   bairro: string = '';
-
+  idade: number = 0;
   idCliente = 0;
   edit = false;
 

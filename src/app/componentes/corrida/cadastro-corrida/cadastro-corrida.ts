@@ -27,15 +27,16 @@ export class CadastroCorrida {
     private change: ChangeDetectorRef,
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.idCorrida = Number(this.router.snapshot.paramMap.get('id'));
-if(this.idCorrida > 0){
-this.edit=true
-this.CarregarDadosCorrida(this.idCorrida)
-}
+
+    if (this.idCorrida > 0) {
+      this.edit = true;
+      this.CarregarDadosCorrida(this.idCorrida);
+    }
   }
 
- /* adicionar() {
+  /* adicionar() {
     const corrida = new Corridas();
     corrida.descricaoCorrida = this.descricao;
     corrida.dataCorrida = this.data;
@@ -61,7 +62,7 @@ this.CarregarDadosCorrida(this.idCorrida)
         this.data = dadosCorrida.dataCorrida;
         this.distancia = dadosCorrida.distCorrida;
 
-        this.change.detectChanges()
+        this.change.detectChanges();
       },
       error: (msgErro) => {
         console.log('Erro ao carregar componentes', msgErro);
@@ -85,22 +86,18 @@ this.CarregarDadosCorrida(this.idCorrida)
         error: (msgErro) => {
           console.log(msgErro);
         },
-
       });
-
     } else {
-this.corridaService.salvarCorrida(corrida)
-.subscribe({
-  next: (resposta) => {
-    console.log(resposta);
-  },
-  error: (msgErro) => {
-    console.log(msgErro);
-  },
-})
+      this.corridaService.salvarCorrida(corrida).subscribe({
+        next: (resposta) => {
+          console.log(resposta);
+        },
+        error: (msgErro) => {
+          console.log(msgErro);
+        },
+      });
     }
-this.limparDados()
-this.corridaService.listarCorridas();
+    this.limparDados();
+    this.corridaService.listarCorridas();
   }
-
 }

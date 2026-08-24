@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-incricao-corrida',
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './incricao-corrida.html',
   styleUrl: './incricao-corrida.css',
 })

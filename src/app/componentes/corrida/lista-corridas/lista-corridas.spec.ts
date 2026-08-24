@@ -6,14 +6,14 @@ describe('ListaCorridas', () => {
   let component: ListaCorridas;
   let fixture: ComponentFixture<ListaCorridas>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach( () => {
+ TestBed.configureTestingModule({
       imports: [ListaCorridas],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ListaCorridas);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+fixture.whenStable();
   });
 
   it('should create', () => {
