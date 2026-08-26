@@ -8,17 +8,6 @@ test('deve abrir página inicial', async ({ page }) => {
 });
 
 
-test('deve navegar entre os links', async ({ page }) => {
-  await page.goto('http://localhost:4200/menu');
-
-  await page.getByRole('link', { name: 'Cadastro', exact: true }).first().click();
-  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
-  await page.getByRole('link', { name: 'Cadastro Corrida', exact: true }).click();
-  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
-  await page.getByRole('link', { name: 'Lista Corridas', exact: true }).click();
-  await page.getByRole('link', { name: 'Inscreva-se', exact: true }).click();
-  await page.getByRole('link', { name: 'Home', exact: true }).click();
-});
 
 
 test('deve cadastrar-se', async ({ page }) => {
@@ -47,13 +36,19 @@ test('deve cadastrar-se', async ({ page }) => {
   await expect(page.getByText('Marcos').first()).toBeVisible();
 });
 
-
-test('deve excluir o cadastro',async ({page})=>{
-  await page.goto('http://localhost:4200/cadastros');
-
-  await page.getByRole('button',{name:'Excluir'}).first().click();
  
-})
+test('deve navegar entre os links', async ({ page }) => {
+  await page.goto('http://localhost:4200/menu');
+
+  await page.getByRole('link', { name: 'Cadastro', exact: true }).first().click();
+  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
+  await page.getByRole('link', { name: 'Cadastro Corrida', exact: true }).click();
+  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
+  await page.getByRole('link', { name: 'Lista Corridas', exact: true }).click();
+  await page.getByRole('link', { name: 'Inscreva-se', exact: true }).click();
+  await page.getByRole('link', { name: 'Home', exact: true }).click();
+});
+/*test('deve excluir o cadastro',({page})=>)*/
 
 test('get started link', async ({ page }) => {
   await page.goto('https://playwright.dev/');
