@@ -10,6 +10,7 @@ import { IncricaoCorrida } from './componentes/corrida/incricao-corrida/incricao
 
 export const routes: Routes = [
   { path: '', redirectTo: 'formulario', pathMatch: 'full' },
+  { path: 'menu', component: Menu },
   { path: 'formulario/:id', component: Formulario },
   { path: 'formulario', component: Formulario },
   { path: 'cadastro-corrida/:id', component: CadastroCorrida },

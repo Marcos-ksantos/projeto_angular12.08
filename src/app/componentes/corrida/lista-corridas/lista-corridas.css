@@ -30,3 +30,11 @@ box-shadow: 7px 6px 5px;
 #btn button:hover{
     transform: translateY(-2px);
 }
+#empty{
+    text-align: center;
+    border: 1px solid;
+    margin:10px auto;
+    padding: 10px;
+font-size: 20px;
+width: 400px;
+}

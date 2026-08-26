@@ -1,3 +1,5 @@
+import { describe, it, beforeEach, expect } from 'vitest';
+
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 
