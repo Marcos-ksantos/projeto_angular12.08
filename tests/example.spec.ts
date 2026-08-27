@@ -1,14 +1,22 @@
 import { test, expect } from '@playwright/test';
 import { async } from 'rxjs';
 
-
 test('deve abrir página inicial', async ({ page }) => {
   await page.goto('http://localhost:4200/');
   await expect(page.getByText('Cadastrar Atleta')).toBeVisible();
 });
 
+test('deve navegar entre os links', async ({ page }) => {
+  await page.goto('http://localhost:4200/menu');
 
-
+  await page.getByRole('link', { name: 'Cadastro', exact: true }).first().click();
+  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
+  await page.getByRole('link', { name: 'Cadastro Corrida', exact: true }).click();
+  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
+  await page.getByRole('link', { name: 'Lista Corridas', exact: true }).click();
+  await page.getByRole('link', { name: 'Inscreva-se', exact: true }).click();
+  await page.getByRole('link', { name: 'Home', exact: true }).click();
+});
 
 test('deve cadastrar-se', async ({ page }) => {
   await page.goto('http://localhost:4200/');
@@ -33,29 +41,44 @@ test('deve cadastrar-se', async ({ page }) => {
 
   await page.goto('http://localhost:4200/cadastros');
 
-  await expect(page.getByText('Marcos').first()).toBeVisible();
+  await expect(page.locator('.cliente').first()).toBeVisible();
 });
 
- 
-test('deve navegar entre os links', async ({ page }) => {
-  await page.goto('http://localhost:4200/menu');
+test('deve excluir o cadastro', async ({ page }) => {
+  await page.goto('http://localhost:4200/cadastros');
 
-  await page.getByRole('link', { name: 'Cadastro', exact: true }).first().click();
-  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
-  await page.getByRole('link', { name: 'Cadastro Corrida', exact: true }).click();
-  await page.getByRole('link', { name: 'Lista Cadastrados', exact: true }).click();
-  await page.getByRole('link', { name: 'Lista Corridas', exact: true }).click();
-  await page.getByRole('link', { name: 'Inscreva-se', exact: true }).click();
-  await page.getByRole('link', { name: 'Home', exact: true }).click();
+  page.on('dialog', async dialog => {
+   expect(dialog.message()).toBe('Deseja Excluir o Atleta?');
+   await dialog.accept();
+   });
+
+  const cadastro = page.locator('.cliente').first();
+
+  await cadastro.getByRole('button', { name: 'Excluir', exact: true }).click();
+
+  await expect(cadastro).not.toBeAttached;
 });
-/*test('deve excluir o cadastro',({page})=>)*/
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('deve alterar o cadastro', async ({ page }) => {
+  await page.goto('http://localhost:4200/cadastros');
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  const cadastro = page.locator('.cliente').first();
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  await cadastro
+    .getByRole('button', {
+      name: 'Alterar',
+      exact: true,
+    })
+    .click();
+
+  await expect(page.locator('#nome')).toBeVisible();
+
+  await page.locator('#nome').fill('Marcos Alterado');
+
+  await page
+    .getByRole('button', {
+      name: 'Alterar',
+      exact: true,
+    })
+    .click();
 });
