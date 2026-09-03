@@ -12,17 +12,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './formulario.css',
 })
 export class Formulario {
+  // nome: string = '';
+  // data: string = '';
+  // sexo: string = '';
+  idpessoa: number = 0;
   nome: string = '';
-  data: string = '';
   sexo: string = '';
-  cpf: number = 0;
-  cep: string = '';
-  uf: string = '';
-  cidade: string = '';
-  bairro: string = '';
-  idade: number = 0;
-  idCliente = 0;
-  edit = false;
+  datanascimento: string = '';
+  peso: number = 0;
+  altura: number = 0.0;
+  //cpf: number = 0;
+  //cep: string = '';
+  // uf: string = '';
+  //cidade: string = '';//
+  // bairro: string = '';
+  //// idade: number = 0;
+  idCliente: number = 0;
+  edit: boolean = false;
 
   constructor(
     private clienteService: ClientesService,
@@ -42,40 +48,52 @@ export class Formulario {
   ExibirDads() {
     console.log(
       this.nome,
-      this.data,
-      this.cpf,
       this.sexo,
-      this.cep,
-      this.uf,
-      this.cidade,
-      this.bairro,
+      this.datanascimento,
+      this.peso,
+      this.altura,
+      //this.nome,
+      //this.data,
+      //this.cpf,
+      //this.sexo,
+      //this.cep,
+      //this.uf,
+      //this.cidade,
+      //this.bairro,
     );
 
     this.limparDados();
   }
 
   limparDados() {
-    this.nome = '';
-    this.data = '';
-    this.cpf = 0;
-    this.sexo = '';
-    this.cep = '';
-    this.uf = '';
-    this.cidade = '';
-    this.bairro = '';
+    this.nome;
+    this.sexo;
+    this.datanascimento;
+    this.peso;
+    this.altura;
+    //this.nome = '';
+    //this.data = '';
+    //this.cpf = 0;
+    //this.sexo = '';
+    //this.cep = '';
+    //this.uf = '';
+    //this.cidade = '';
+    //this.bairro = '';
   }
 
   CarregaDados(id: number) {
     this.clienteService.listarAtleta(id).subscribe({
       next: (dadosCliente) => {
         this.nome = dadosCliente.nome;
-        this.data = dadosCliente.data;
-        this.cpf = dadosCliente.cpf;
+        this.datanascimento = dadosCliente.datanascimento;
+        //this.cpf = dadosCliente.cpf;
         this.sexo = dadosCliente.sexo;
-        this.cep = dadosCliente.cep;
-        this.uf = dadosCliente.uf;
-        this.cidade = dadosCliente.cidade;
-        this.bairro = dadosCliente.bairro;
+        this.altura = dadosCliente.altura;
+        this.peso = dadosCliente.peso;
+        //this.cep = dadosCliente.cep;
+        //this.uf = dadosCliente.uf;
+        // this.cidade = dadosCliente.cidade;
+        // this.bairro = dadosCliente.bairro;
 
         this.change.detectChanges();
       },
@@ -85,20 +103,28 @@ export class Formulario {
     });
   }
 
-  enviarDados() {
+  enviarDados(form:any) {
+    if(form.invalid){
+      console.log('Campo vazio!')
+      return;
+    }
     const cliente = new Cliente();
 
     cliente.nome = this.nome;
-    cliente.data = this.data;
     cliente.sexo = this.sexo;
-    cliente.cpf = this.cpf;
-    cliente.cep = this.cep;
-    cliente.uf = this.uf;
-    cliente.cidade = this.cidade;
-    cliente.bairro = this.bairro;
-
+    cliente.datanascimento = this.datanascimento;
+    cliente.peso = this.peso;
+    cliente.altura = this.altura;
+    //cliente.sexo = this.sexo;
+    // cliente.cpf = this.cpf;
+    // cliente.cep = this.cep;
+    //cliente.uf = this.uf;
+    // cliente.cidade = this.cidade;
+    // cliente.bairro = this.bairro;
+    console.log('Dados enviados:', cliente);
     if (this.edit) {
-      cliente.id = this.idCliente;
+      cliente.idpessoa = this.idCliente;
+
       this.clienteService.alterarAtleta(cliente).subscribe({
         next: (resposta) => {
           console.log(resposta);
@@ -110,15 +136,16 @@ export class Formulario {
     } else {
       this.clienteService.salvarAtleta(cliente).subscribe({
         next: (resposta) => {
-          console.log(resposta);
+          console.log('Cadastrado com sucesso:', resposta);
         },
-        error: (msgErro) => {
-          console.log(msgErro);
+        error: (erro) => {
+          console.error('ERRO AO CADASTRAR:', erro);
+          console.error('STATUS:', erro.status);
+          console.error('BACKEND:', erro.error);
+
+          console.log('DETALHE:', JSON.stringify(erro.error?.detail, null, 2));
         },
       });
     }
-    this.limparDados();
-
-    this.clienteService.listarAtletas();
   }
 }

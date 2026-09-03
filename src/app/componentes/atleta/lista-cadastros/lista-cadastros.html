@@ -2,19 +2,18 @@
 <div id="form">
 
 
-@for(elem of ListaAtletas();track elem.id){
+@for(elem of ListaAtletas();track elem.idpessoa){
     <div class="cliente">
-<p> {{elem.id}}</p>
+<p> {{elem.idpessoa}}</p>
 <p>Nome: <strong>{{elem.nome}}</strong></p>
-<p>Idade: <strong>{{idadeCliente(elem.data)}}</strong></p>
-<p>CPF: <strong>{{elem.cpf}}</strong></p>
+<p>Idade: <strong>{{idadeCliente(elem.datanascimento)}}</strong></p>
+
 <p>GÊNERO: <strong>{{elem.sexo}}</strong></p>
-<p>CEP: <strong>{{elem.cep}}</strong></p>
-<p>UF: <strong>{{elem.uf}}</strong></p>
+
 
 <div id="btns">
     <button type="button" class="Alterar" (click)="  CarregaDadosAtletaForm(elem)">Alterar</button>
-    <button type="button" class="Excluir" (click)="excluir(elem.id)">Excluir</button>
+    <button type="button" class="Excluir" (click)="excluir(elem.idpessoa)">Excluir</button>
 </div>
 
       </div>

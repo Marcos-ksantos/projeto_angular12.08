@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'menu', component: Menu },
   { path: 'formulario/:id', component: Formulario },
   { path: 'formulario', component: Formulario },
-  { path: 'cadastro-corrida/:id', component: CadastroCorrida },
+  { path: 'cadastro-corrida/:idpessoa', component: CadastroCorrida },
   { path: 'cadastro-corrida', component: CadastroCorrida },
   { path: 'lista-corrida', component: ListaCorridas },
   { path: 'inicio', component: TelaInicio },

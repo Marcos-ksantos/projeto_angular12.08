@@ -23,27 +23,33 @@ return idade
   }
 
   listarAtletas(): Observable<Cliente[]> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
+    const urlApi =  'http://127.0.0.1:8000/pessoa/'
+    //'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas';
     return this.http.get<Cliente[]>(urlApi);
   }
 
   listarAtleta(id: number): Observable<Cliente> {
-    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
+    const urlApi = `http://127.0.0.1:8000/pessoa/${id}`
+    //`https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
     return this.http.get<Cliente>(urlApi);
   }
 
   salvarAtleta(cliente: Cliente): Observable<Cliente> {
-    const urlApi = 'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/';
+    const urlApi = 'http://127.0.0.1:8000/pessoa/'
+
+    //'https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/';
     return this.http.post<Cliente>(urlApi, cliente);
   }
 
   excluirAtleta(id: number): Observable<Cliente> {
-    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
+    const urlApi = `http://127.0.0.1:8000/pessoa/${id}` 
+    //`https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${id}`;
     return this.http.delete<Cliente>(urlApi);
   }
 
   alterarAtleta(cliente: Cliente): Observable<Cliente> {
-    const urlApi = `https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${cliente.id}`;
+    const urlApi =`http://127.0.0.1:8000/pessoa/${cliente.idpessoa}`
+    //`https://6a835e4dcb486d243403a5ca.mockapi.io/pessoas/${cliente.id}`;
     return this.http.put<Cliente>(urlApi, cliente);
   }
 }

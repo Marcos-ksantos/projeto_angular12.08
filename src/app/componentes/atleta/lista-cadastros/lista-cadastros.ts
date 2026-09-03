@@ -55,7 +55,7 @@ return this.clientesService.CalcularIdade(data);
   }
 
   CarregaDadosAtletaForm(atleta: Cliente) {
-    this.router.navigate(['/formulario', atleta.id]);
+    this.router.navigate(['/formulario', atleta.idpessoa]);
   }
 
 }
