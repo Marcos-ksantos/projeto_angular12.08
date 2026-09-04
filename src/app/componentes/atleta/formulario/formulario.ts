@@ -37,7 +37,7 @@ export class Formulario {
   ) {}
 
   ngOnInit() {
-    this.idCliente = Number(this.router.snapshot.paramMap.get('id'));
+    this.idCliente = Number(this.router.snapshot.paramMap.get('idpessoa'));
 
     if (this.idCliente > 0) {
       this.edit = true;
@@ -45,32 +45,12 @@ export class Formulario {
     }
   }
 
-  ExibirDads() {
-    console.log(
-      this.nome,
-      this.sexo,
-      this.datanascimento,
-      this.peso,
-      this.altura,
-      //this.nome,
-      //this.data,
-      //this.cpf,
-      //this.sexo,
-      //this.cep,
-      //this.uf,
-      //this.cidade,
-      //this.bairro,
-    );
-
-    this.limparDados();
-  }
-
   limparDados() {
-    this.nome;
-    this.sexo;
-    this.datanascimento;
-    this.peso;
-    this.altura;
+    this.nome = '';
+  this.sexo = '';
+  this.datanascimento = '';
+  this.peso = 0;
+  this.altura = 0;
     //this.nome = '';
     //this.data = '';
     //this.cpf = 0;
@@ -86,10 +66,10 @@ export class Formulario {
       next: (dadosCliente) => {
         this.nome = dadosCliente.nome;
         this.datanascimento = dadosCliente.datanascimento;
-        //this.cpf = dadosCliente.cpf;
         this.sexo = dadosCliente.sexo;
         this.altura = dadosCliente.altura;
         this.peso = dadosCliente.peso;
+        //this.cpf = dadosCliente.cpf;
         //this.cep = dadosCliente.cep;
         //this.uf = dadosCliente.uf;
         // this.cidade = dadosCliente.cidade;
@@ -105,16 +85,18 @@ export class Formulario {
 
   enviarDados(form:any) {
     if(form.invalid){
-      console.log('Campo vazio!')
+      console.warn('Campo vazio!')
       return;
+
+      const alturaFormatada = this.formatarAltura(this.altura)
     }
     const cliente = new Cliente();
 
     cliente.nome = this.nome;
     cliente.sexo = this.sexo;
     cliente.datanascimento = this.datanascimento;
-    cliente.peso = this.peso;
-    cliente.altura = this.altura;
+    cliente.peso = Number(this.peso);
+    cliente.altura = Number(this.formatarAltura(this.altura));
     //cliente.sexo = this.sexo;
     // cliente.cpf = this.cpf;
     // cliente.cep = this.cep;
@@ -127,16 +109,21 @@ export class Formulario {
 
       this.clienteService.alterarAtleta(cliente).subscribe({
         next: (resposta) => {
-          console.log(resposta);
+          console.log('Alterado com sucesso',resposta);
+          this.limparDados();
+          this.edit = false;
+          form.resetForm();
         },
         error: (msgErro) => {
-          console.log(msgErro);
+          console.log('ERRO AO ALTERAR:',msgErro);
         },
       });
     } else {
       this.clienteService.salvarAtleta(cliente).subscribe({
         next: (resposta) => {
           console.log('Cadastrado com sucesso:', resposta);
+          this.limparDados();
+          form.resetForm();
         },
         error: (erro) => {
           console.error('ERRO AO CADASTRAR:', erro);
@@ -147,5 +134,18 @@ export class Formulario {
         },
       });
     }
+  }
+
+  private formatarAltura(valor: number | string): string {
+    if (!valor) return '';
+  
+    let num = Number(valor);
+  
+  
+    if (num >= 100) {
+      num = num / 100;
+    }
+  
+    return num.toFixed(2).replace('.', '.');
   }
 }

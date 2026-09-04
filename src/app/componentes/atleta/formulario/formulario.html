@@ -1,116 +1,119 @@
 <div id="geral">
 
-    <div id="cabecario">
-      <h2>{{ !edit ? 'Cadastrar' : 'Alterar' }} Atleta</h2>
+  <div id="cabecario">
+    <h2>{{ !edit ? 'Cadastrar' : 'Alterar' }} Atleta</h2>
+  </div>
+
+  <form id="form" #form="ngForm" (ngSubmit)="enviarDados(form)" novalidate>
+
+    <label for="nome">Nome</label>
+    <input
+      type="text"
+      class="class-1"
+      name="nome"
+      id="nome"
+      [(ngModel)]="nome"
+      required
+      #nomeInput="ngModel"
+    >
+    <div *ngIf="nomeInput.invalid && nomeInput.touched">
+      Campo obrigatório
     </div>
-  
-    <form id="form"#form="ngForm" (ngSubmit)="enviarDados(form)" novalidate>
-  
-      <label for="nome">Nome</label>
+
+    <label for="data">Data de nascimento</label>
+    <input
+      type="date"
+      class="class-4"
+      name="datanascimento"
+      id="data"
+      [(ngModel)]="datanascimento"
+      required
+      #dataInput="ngModel"
+    >
+    <div *ngIf="dataInput.invalid && dataInput.touched">
+      Campo obrigatório
+    </div>
+
+    <div>
+      <label>Gênero</label>
+
       <input
-        type="text"
-        class="class-1"
-        name="nome"
-        id="nome"
-        [(ngModel)]="nome"
+        type="radio"
+        class="rad"
+        name="sexo"
+        [(ngModel)]="sexo"
+        value="M"
         required
-        #nomeInput="ngModel"
       >
-      <div *ngIf="nomeInput.invalid && nomeInput.touched">
+      <span>Masculino</span>
+
+      <input
+        type="radio"
+        class="rad"
+        name="sexo"
+        [(ngModel)]="sexo"
+        value="F"
+        required
+      >
+      <span>Feminino</span>
+
+      <input
+        type="radio"
+        class="rad"
+        name="sexo"
+        [(ngModel)]="sexo"
+        value="N"
+        required
+        #sexoInput="ngModel"
+      >
+      <span>Não declarar</span>
+
+      <div *ngIf="sexoInput.invalid && sexoInput.touched">
         Campo obrigatório
       </div>
-  
-      <label for="data">Data de nascimento</label>
-      <input
-        type="date"
-        class="class-4"
-        name="datanascimento"
-        id="data"
-        [(ngModel)]="datanascimento"
-        required
-              #dataInput="ngModel">
-              <div *ngIf="dataInput.invalid && dataInput.touched">
-                Campo obrigatório
-              </div>
-      <div>
-        <label>Gênero</label>
-  
-        <input
-          type="radio"
-          class="rad"
-          name="sexo"
-          [(ngModel)]="sexo"
-          value="M"
-          required
-                #sexoInput="ngModel">
-        <span>Masculino</span>
-  
-        <input
-          type="radio"
-          class="rad"
-          name="sexo"
-          [(ngModel)]="sexo"
-          value="F"
-          required
-                #sexoInput="ngModel">
-        <span>Feminino</span>
-  
-        <input
-          type="radio"
-          class="rad"
-          name="sexo"
-          [(ngModel)]="sexo"
-          value="N"
-          required
-                #sexoInput="ngModel">
-        <span>Não declarar</span>
+    </div>
 
-        <div *ngIf="sexoInput.invalid && sexoInput.touched">
-            Campo obrigatório
-          </div>
-      </div>
-  
-      <label for="altura">Altura</label>
-      <input
-        type="number"
-        step="0.01"
-        class="class-4"
-        name="altura"
-        id="altura"
-        [(ngModel)]="altura"
-        required
-              #alturaInput="ngModel">
+    <label for="altura">Altura</label>
+    <input
+      type="number"
+      step="0.01"
+      class="class-4"
+      name="altura"
+      id="altura"
+      [(ngModel)]="altura"
+      required
+      #alturaInput="ngModel"
+    >
+    <div *ngIf="alturaInput.invalid && alturaInput.touched">
+      Campo obrigatório
+    </div>
 
-              <div *ngIf="alturaInput.invalid && alturaInput.touched">
-                Campo obrigatório
-              </div>
-  
-      <label for="peso">Peso</label>
-      <input
-        type="number"
-        class="class-4"
-        name="peso"
-        id="peso"
-        [(ngModel)]="peso"
-        required
-              #pesoInput="ngModel">
-  
-              <div *ngIf="pesoInput.invalid && pesoInput.touched">
-                Campo obrigatório
-              </div>
-  
-      <div id="btns">
-  
-        <button type="submit" class="btn-add" [disabled]="form.invalid">
-          {{ !edit ? 'Cadastrar' : 'Alterar' }}
-        </button>
-  
-        <button type="reset" class="btn-limpar">
-          Limpar
-        </button>
-  
-      </div>
-  
-    </form>
-  
-  </div>
+    <label for="peso">Peso</label>
+    <input
+      type="number"
+      class="class-4"
+      name="peso"
+      id="peso"
+      [(ngModel)]="peso"
+      required
+      #pesoInput="ngModel"
+    >
+    <div *ngIf="pesoInput.invalid && pesoInput.touched">
+      Campo obrigatório
+    </div>
+
+    <div id="btns">
+
+      <button type="submit" class="btn-add" [disabled]="form.invalid">
+        {{ !edit ? 'Cadastrar' : 'Alterar' }}
+      </button>
+
+      <button type="button" class="btn-limpar" (click)="limparDados(); edit = false; form.resetForm()">
+        Limpar
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

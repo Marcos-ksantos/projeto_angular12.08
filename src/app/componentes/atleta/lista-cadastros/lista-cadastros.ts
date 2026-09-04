@@ -5,6 +5,7 @@ import { ClientesService } from '../../../service/cliente/clientes-service';
 import { Cliente } from '../../../modelos/clientes';
 import { Router } from '@angular/router';
 import { signal } from '@angular/core';
+
 //import { RouterLink } from '@angular/router';
 
 @Component({
@@ -21,6 +22,11 @@ export class ListaCadastros {
     private clientesService: ClientesService,
   ) {}
 
+  CalcularImc(cliente:ClientesService){
+if(){
+
+}
+  }
   idadeCliente(data:string) {
 return this.clientesService.CalcularIdade(data);
   }
